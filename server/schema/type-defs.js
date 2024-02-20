@@ -18,6 +18,24 @@ const typeDefs = gql`
         isInTheaters: Boolean!
     }
 
+    input CreateUserInput {
+        name: String!
+        username: String!
+        age: Int!
+        nationality: Nationality = BRAZIL
+    }
+
+    input updateUsernameInput {
+        id: ID!
+        newUsername: String!
+    }
+
+    type Mutation {
+        createUser(createUserInput: CreateUserInput!): User
+        updateUsername(updateUsernameInput: updateUsernameInput!): User
+        deleteUser(id: ID!): User
+    }
+
     type Query {
         users: [User!]!
         user(id: ID!): User
@@ -29,6 +47,7 @@ const typeDefs = gql`
         TW
         US
         CN
+        BRAZIL 
     }
 `;
 
